@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos personales del Afiliado</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+        }
+        .form-control, .btn {
+            border-radius: 0;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="card-title">
+                    Formulario de Datos Personales
+                    <i class="fa fa-medkit" aria-hidden="true"></i>
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="post" action="/store" enctype="multipart/form-data" name="formulario">
+                    
+                    <label for="nombre">nombre:</label>
+                    <input type="text" name="txtNombre" id="txtNombre" class="form-control"> <br>
+
+                    <label for="apellido">apellido:</label>
+                    <input type="text" name="txtApellido" id="txtApellido" class="form-control"> <br>
+
+                    <label for="patologia">patologia:</label>
+                    <input type="text" name="txtPatologia" id="txtPatologia" class="form-control"> <br>
+
+                    <label for="informes">informes:</label>
+                    <input type="text" name="txtInformes" id="txtInformes" class="form-control"><br>
+                    
+                    <label for="foto">foto:</label>
+                    <input type="file" name="txtFoto" id="txtFoto" class="form-control-file" > <br><br>
+
+                    <input type="submit" value="Agregar" class="btn btn-primary">
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        (function(){
+
+            var formulario = document.getElementsByName('formulario')[0];
+            
+            var validarNombre = function(e){
+                if (formulario.txtNombre.value == 0){
+                    alert("Completa el campo nombre");
+                    e.preventDefault();
+                    }
+                    else{
+                        if (formulario.txtNombre.value.length > 50){
+                            alert("Nombre Muy extenso");
+                            e.preventDefault();
+                            }
+                    }
+            };
+
+            var validarApellido = function(e){
+                if (formulario.txtApellido.value == 0){
+                    alert("Completa el campo Apellido");
+                    e.preventDefault();
+                    }
+                    else{
+                        if (formulario.txtApellido.value.length > 50){
+                            alert("apellido Muy extenso");
+                            e.preventDefault();
+                            }
+                    }
+            };
+
+            var validarPatologia = function(e){
+                if (formulario.txtPatologia.value == 0){
+                    alert("Completa el campo patologia");
+                    e.preventDefault();
+                    }
+                    else{
+                        if (formulario.txtPatologia.value.length > 50){
+                            alert("patologia no existente");
+                            e.preventDefault();
+                            }
+                    }
+            };
+
+            var validarInforme = function(e){
+                if (formulario.txtInformes.value == 0){
+                    alert("Completa el campo informes");
+                    e.preventDefault();
+                    }
+                    else{
+                        if (formulario.txtInformes.value.length > 399){
+                            alert("informe muy extenso");
+                            e.preventDefault();
+                            }
+                    }
+            };
+
+            
+
+            
+
+            var validar = function(e){
+                validarNombre(e);
+                validarApellido(e);
+                validarPatologia(e);
+                validarInforme(e);
+                
+            };
+
+            formulario.addEventListener("submit", validar);
+            
+        }())
+    </script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+</body>
+</html>
